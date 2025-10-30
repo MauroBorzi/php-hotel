@@ -48,12 +48,33 @@
       'vote' => 2,
       'distance_to_center' => 50
     ],
-
   ];
+
+  $filterParking = isset($_GET['parking']) && $_GET['parking'] === '1';
+
+  if ($filterParking) {
+    $hotels = array_filter($hotels, fn($hotel) => $hotel['parking']);
+  }
   ?>
 
   <div class="container">
     <h1 class="text-center py-3">Lista Hotel</h1>
+
+    <form method="GET" class="mb-4">
+      <div class="form-check form-switch">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          name="parking"
+          value="1"
+          id="parking"
+          <?= $filterParking ? 'checked' : '' ?>
+          onchange="this.form.submit()">
+        <label class="form-check-label" for="parking">
+          Mostra solo hotel con parcheggio
+        </label>
+      </div>
+    </form>
 
     <div class="table-responsive">
       <table class="table table-striped table-bordered table-hover align-middle shadow-sm">
