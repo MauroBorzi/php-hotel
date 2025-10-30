@@ -50,15 +50,37 @@
     ],
 
   ];
-
-  foreach ($hotels as $hotel) {
-    foreach ($hotel as $key => $value) {
-      echo $key . ": $value------";
-    }
-    echo "<br/>";
-  }
-
   ?>
+
+  <div class="container">
+    <h1 class="text-center py-3">Lista Hotel</h1>
+
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered table-hover align-middle shadow-sm">
+        <thead class="table-dark">
+          <tr>
+            <th>Nome</th>
+            <th>Descrizione</th>
+            <th>Parcheggio</th>
+            <th>Voto</th>
+            <th>Distanza dal centro (km)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php foreach ($hotels as $hotel): ?>
+            <tr>
+              <td><?= $hotel['name'] ?></td>
+              <td><?= $hotel['description'] ?></td>
+              <td><?= $hotel['parking'] ? 'Sì' : 'No' ?></td>
+              <td><?= $hotel['vote'] ?></td>
+              <td><?= $hotel['distance_to_center'] ?></td>
+            </tr>
+          <?php endforeach; ?>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 </body>
 
 </html>
