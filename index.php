@@ -51,6 +51,13 @@
 
   ];
 
+  foreach ($hotels as $hotel) {
+    foreach ($hotel as $key => $value) {
+      echo $key . ": $value------";
+    }
+    echo "<br/>";
+  }
+
   ?>
 </body>
 
